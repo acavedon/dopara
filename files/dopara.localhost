@@ -1,0 +1,21 @@
+<VirtualHost *:80>
+    DocumentRoot /home/alexandre/public_html/zando
+    ServerName zando.localhost
+    ErrorLog ${APACHE_LOG_DIR}/teste_error.log
+
+    # debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    LogLevel debug
+
+    CustomLog ${APACHE_LOG_DIR}/teste_access.log combined
+</VirtualHost>
+
+<Directory "/home/alexandre/public_html/zando">
+    AllowOverride all
+    Options Indexes FollowSymLinks
+    #-Indexes Includes ExecCGI
+    Order Deny,Allow
+    Deny from all
+    Allow from 127.0.0.1
+    Allow from 192.168.0.0/24
+</Directory>
